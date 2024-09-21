@@ -2,38 +2,43 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//sdsdsdsd
+// sdsdsdsd
 Dictionary<string, string> path = new Dictionary<string, string>();
 path.Add("json", "config/config.json");
 path.Add("xml", "config/config.xml");
 path.Add("ini", "config/config.ini");
+path.Add("personal", "config/personal.json");
 
 builder.Configuration.AddJsonFile(path["json"])
     .AddXmlFile(path["xml"])
-    .AddIniFile(path["ini"]);
+    .AddIniFile(path["ini"])
+    .AddJsonFile(path["personal"]);
 
 builder.Services.AddSingleton<CompanyService>();
 
 var app = builder.Build();
-app.MapGet("/", (IConfiguration appConf, CompanyService companyService) =>
-{
-    var Apple = new Company("Apple", appConf);
-    var Microsoft = new Company("Microsoft", appConf);
-    var Google = new Company("Google", appConf);
+app.MapGet("/", (IConfiguration appConf, CompanyService companyService) => {
+  var Apple = new Company("Apple", appConf);
+  var Microsoft = new Company("Microsoft", appConf);
+  var Google = new Company("Google", appConf);
 
-    var largestStuff = companyService.GetMaxStaffCompanyName(
-        new List<Company> { Apple, Google, Microsoft });
+  var largestStuff = companyService.GetMaxStaffCompanyName(
+      new List<Company> { Apple, Google, Microsoft });
 
-    return $"{Apple}\n\n{Microsoft}\n\n{Google}\n\n\nMax Staff Company Name : {largestStuff}";
+  return $"{Apple}\n\n{Microsoft}\n\n{Google}\n\n\nMax Staff Company Name : {largestStuff}";
+});
+
+app.MapGet("/personal", (IConfiguration appConf) => {
+var Me = new Person(appConf);
+return $"Some personal info:\n\n{Me}";
 });
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for
-    // production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+if (!app.Environment.IsDevelopment()) {
+  app.UseExceptionHandler("/Home/Error");
+  // The default HSTS value is 30 days. You may want to change this for
+  // production scenarios, see https://aka.ms/aspnetcore-hsts.
+  app.UseHsts();
 }
 
 app.UseHttpsRedirection();

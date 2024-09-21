@@ -30,3 +30,4 @@
 /home/n7a/Desktop/3/asp/projects/Companies_lr2/obj/Debug/net8.0/ref/Companies_lr2.dll
 /home/n7a/Desktop/3/asp/projects/Companies_lr2/bin/Debug/net8.0/config/config.json
 /home/n7a/Desktop/3/asp/projects/Companies_lr2/obj/Debug/net8.0/Companies_lr2.sourcelink.json
+/home/n7a/Desktop/3/asp/projects/Companies_lr2/bin/Debug/net8.0/config/personal.json

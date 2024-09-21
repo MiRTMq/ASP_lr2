@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ABwxGCaR5mXQG674f60YXA+Lw5/Ts45IZLPR6GEJuNrMKKRJ73aahDc4X/MU71jZrbo2kWnCDXjzpuhpbMl2Tw==",
+  "success": true,
+  "projectFilePath": "/home/n7a/Desktop/3/asp/projects/Companies_lr2/Companies_lr2.csproj",
+  "expectedPackageFiles": [
+    "/home/n7a/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
